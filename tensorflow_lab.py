@@ -44,7 +44,6 @@ for i in range(9):
     plt.axis('off')
 plt.show()
 
-"""Zadanie na ocene 1"""
 
 model_3epochs = tf.keras.models.Sequential([
     tf.keras.layers.Flatten(input_shape=(28, 28)),
@@ -219,72 +218,3 @@ for i in range(10):
     for j in range(10):
         if i != j and cm[i][j] > 10:
             print(f"Cyfra {i} mylona z cyfrą {j}: {cm[i][j]} razy")
-
-"""**Wpływ różnych konfiguracji modelu na jego dokładność.**
-Liczba epok:
-
-3 epoki → 97.45%
-5 epok → 97.84%
-10 epok → 97.88%
-Wniosek: Więcej epok = lepsza dokładność, ale po 5 epokach poprawa minimalna (0.04%)
-
-Liczba warstw ukrytych:
-
-1 warstwa → 97.84%
-2 warstwy → 97.44%
-3 warstwy → 97.38%
-Wniosek: Więcej warstw = gorsza dokładność! Dla MNIST problem jest prosty, głębsze sieci niepotrzebne.
-
-Liczba neuronów:
-
-64 neurony → 97.37%
-128 neuronów → 97.84%
-256 neuronów → 97.46%
-Wniosek: 128 neuronów optymalne. Za mało (64) = za słaba sieć. Za dużo (256) = przeuczenie.
-
-Zadanie 5:
-Co udało się zaobserwować podczas eksperymentów? Jakie zmiany wpływały pozytywnie, a jakie negatywnie?
-
-Pozytywnie wpłynęło:
-
-- 5 epok treningu - dobry balans dokładność/czas
-- 128 neuronów - optymalna pojemność sieci
-- Prosta architektura (1 warstwa) - najlepsza dla MNIST
-- Normalizacja danych (÷255) - szybsze uczenie
-
-Negatywnie wpłynęło:
-
-- Dodawanie warstw - komplikacja bez korzyści
-- 64 neurony - za mała pojemność modelu
-- 256 neuronów - przeuczenie (overfitting)
-- 10 epok - marnowanie czasu bez poprawy wyniku
-
-Trudności:
-
-- Instalacja TensorFlow na Windows (problemy z DLL) ->Rozwiązanie: Google Colab
-- Długi czas treningu dla 256 neuronów
-- Zaskoczenie, że prostszy model działa lepiej
-
-Zadanie 6: Przeanalizuj dokładność modelu dla poszczególnych klas.
-
-Najlepiej rozpoznawane cyfry:
-
-Cyfra 1: 99.12% - prosta forma
-Cyfra 6: 99.27% - charakterystyczny kształt
-Cyfra 0: 98.88% - wyraźny okrąg
-
-Najgorzej rozpoznawane cyfry:
-
-Cyfra 9: 95.24% - mylona z cyfrą 4
-Cyfra 5: 96.41% - podobna do cyfry 3
-Cyfra 8: 97.13% - złożona struktura
-
-Dlaczego model się myli?
-
-Cyfry 9 i 4 mają podobne górne elementy
-Cyfry 5 i 3 mają zaokrąglone kształty
-Niektóre cyfry nieczytelne nawet dla człowieka (pismo odręczne różne)
-
-Całkowita liczba błędów: 216 z 10,000 (2.16%)
-"""
-
